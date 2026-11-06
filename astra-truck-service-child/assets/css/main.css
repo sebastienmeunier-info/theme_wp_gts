@@ -233,7 +233,7 @@
 	font-weight: 800;
 	letter-spacing: .12em;
 	text-transform: uppercase;
-	margin-bottom: 12px;
+	margin-bottom: 4px;
 }
 .gts-hero-title {
 	color: #fff;
@@ -242,12 +242,12 @@
 	font-style: italic;
 	line-height: 1.1;
 	text-transform: uppercase;
-	margin: 0 0 12px;
+	margin: 0 0 6px;
 }
 .gts-hero-subtitle {
 	color: #eaeaea;
 	font-size: 20px;
-	margin-bottom: 32px;
+	margin-bottom: 24px;
 }
 
 /* ---- Boutons ---- */
