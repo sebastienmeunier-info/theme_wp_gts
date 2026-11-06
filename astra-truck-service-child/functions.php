@@ -10,6 +10,46 @@ define( 'GTS_CHILD_URI', get_stylesheet_directory_uri() );
 require_once GTS_CHILD_DIR . '/inc/customizer.php';
 
 /**
+ * Pictogrammes disponibles pour les services (SVG, stroke currentColor)
+ */
+function gts_icons() {
+	return array(
+		'truck'   => '<path d="M3 6h11v8H3zM14 9h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
+		'wrench'  => '<path d="M21 6.5a5 5 0 0 1-6.6 4.7L7 18.6A2.4 2.4 0 1 1 3.6 15l7.4-7.4A5 5 0 0 1 17.6 1l-3 3 1.4 3 3-1.4z"/>',
+		'cog'     => '<path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm9 4-2 .5v3l2 .5-1 2-2-1-2 2 1 2-2 1-1-2h-3l-1 2-2-1 1-2-2-2-2 1-1-2 2-.5v-3L2 12l2-.5v-3L2 8l1-2 2 1 2-2-1-2 2-1 1 2h3l1-2 2 1-1 2 2 2 2-1 1 2z"/>',
+		'gauge'   => '<path d="M12 4a10 10 0 0 0-10 10h3a7 7 0 1 1 14 0h3A10 10 0 0 0 12 4z"/><path d="M12 10l4 5h-8z"/>',
+		'plug'    => '<path d="M7 2v6M17 2v6M5 8h14v3a7 7 0 0 1-14 0zM12 18v4"/>',
+		'clock'   => '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>',
+		'bolt'     => '<path d="M13 2 4 14h6l-1 8 9-12h-6z"/>',
+		'droplet'  => '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
+	);
+}
+
+/**
+ * Libellés des pictogrammes pour le Customizer
+ */
+function gts_icon_choices() {
+	return array(
+		'truck'   => __( 'Camion', 'astra-truck-service-child' ),
+		'wrench'  => __( 'Clé à molette', 'astra-truck-service-child' ),
+		'cog'     => __( 'Engrenage', 'astra-truck-service-child' ),
+		'gauge'   => __( 'Compteur', 'astra-truck-service-child' ),
+		'plug'    => __( 'Électricité', 'astra-truck-service-child' ),
+		'clock'   => __( 'Horloge', 'astra-truck-service-child' ),
+		'bolt'    => __( 'Éclair', 'astra-truck-service-child' ),
+		'droplet' => __( 'Goutte (huile)', 'astra-truck-service-child' ),
+	);
+}
+
+/**
+ * Valider un pictogramme choisi
+ */
+function gts_sanitize_icon( $value ) {
+	$icons = gts_icons();
+	return isset( $icons[ $value ] ) ? $value : 'wrench';
+}
+
+/**
  * Styles parent + enfant
  */
 function gts_child_enqueue_styles() {

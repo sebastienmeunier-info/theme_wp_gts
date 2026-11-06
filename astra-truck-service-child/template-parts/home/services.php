@@ -3,13 +3,7 @@
  * Services — 4 blocs icônes
  */
 
-$icons = array(
-	'truck'  => '<path d="M3 6h11v8H3zM14 9h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>',
-	'wrench' => '<path d="M21 6.5a5 5 0 0 1-6.6 4.7L7 18.6A2.4 2.4 0 1 1 3.6 15l7.4-7.4A5 5 0 0 1 17.6 1l-3 3 1.4 3 3-1.4z"/>',
-	'gauge'  => '<path d="M12 4a10 10 0 0 0-10 10h3a7 7 0 1 1 14 0h3A10 10 0 0 0 12 4z"/><path d="M12 10l4 5h-8z"/>',
-	'plug'   => '<path d="M7 2v6M17 2v6M5 8h14v3a7 7 0 0 1-14 0zM12 18v4"/>',
-	'cog'    => '<path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm9 4-2 .5v3l2 .5-1 2-2-1-2 2 1 2-2 1-1-2h-3l-1 2-2-1 1-2-2-2-2 1-1-2 2-.5v-3L2 12l2-.5v-3L2 8l1-2 2 1 2-2-1-2 2-1 1 2h3l1-2 2 1-1 2 2 2 2-1 1 2z"/>',
-);
+$icons = gts_icons();
 
 $defaults = array(
 	1 => array( 'truck',  'Dépannage sur site',     'Intervention 24h/24 et 7j/7 partout sur le département.' ),

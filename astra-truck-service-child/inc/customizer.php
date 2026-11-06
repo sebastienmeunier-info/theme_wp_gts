@@ -139,12 +139,13 @@ function gts_customize_register( $wp_customize ) {
 	for ( $i = 1; $i <= 4; $i++ ) {
 		$wp_customize->add_setting( "gts_service_{$i}_icon", array(
 			'default'           => 'wrench',
-			'sanitize_callback' => 'sanitize_key',
+			'sanitize_callback' => 'gts_sanitize_icon',
 		) );
 		$wp_customize->add_control( "gts_service_{$i}_icon", array(
-			'label'   => sprintf( __( 'Service %d — icône (truck, wrench, gauge, plug, cog)', 'astra-truck-service-child' ), $i ),
+			'label'   => sprintf( __( 'Service %d — pictogramme', 'astra-truck-service-child' ), $i ),
 			'section' => 'gts_services',
-			'type'    => 'text',
+			'type'    => 'select',
+			'choices' => gts_icon_choices(),
 		) );
 
 		$wp_customize->add_setting( "gts_service_{$i}_title", array(
