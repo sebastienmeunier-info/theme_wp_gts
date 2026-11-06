@@ -13,30 +13,149 @@
 	padding: 0 24px;
 }
 
-/* ---- Top bar téléphone ---- */
-.gts-topbar {
-	background: var(--gts-dark);
-	color: #fff;
-	font-size: 14px;
-	padding: 6px 0;
+/* ---- Header sur mesure (remplace le header Astra) ---- */
+.site-header,
+.ast-header-break-point .site-header,
+#masthead {
+	display: none !important;
 }
-.gts-topbar-inner,
-.gts-topbar .gts-container {
+
+.gts-header {
+	background: #fff;
+}
+
+/* Barre blanche : logo / slogan / atouts / téléphone */
+.gts-header-top {
+	background: #fff;
+	border-bottom: 1px solid #e5e5e5;
+}
+.gts-header-inner {
 	display: flex;
-	justify-content: flex-end;
 	align-items: center;
-	gap: 16px;
+	gap: 32px;
+	min-height: 110px;
 }
-.gts-topbar-tag {
-	background: var(--gts-accent);
-	padding: 2px 8px;
+.gts-brand-logo {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+}
+.gts-brand-logo img {
+	max-height: 80px;
+	width: auto;
+}
+.gts-brand-text {
+	font-size: 22px;
+	font-weight: 800;
+	text-transform: uppercase;
+	color: var(--gts-dark);
+	letter-spacing: .02em;
+}
+.gts-slogan {
+	flex: 1;
+	text-align: center;
+	font-size: 15px;
 	font-weight: 700;
-	letter-spacing: .04em;
+	text-transform: uppercase;
+	letter-spacing: .06em;
+	color: var(--gts-dark);
+	line-height: 1.5;
+	margin: 0 12px;
 }
-.gts-topbar-phone {
+.gts-features {
+	display: flex;
+	gap: 24px;
+	flex-shrink: 0;
+}
+.gts-feature {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.gts-feature svg {
+	width: 34px;
+	height: 34px;
 	color: var(--gts-accent);
+	flex-shrink: 0;
+}
+.gts-feature span {
+	font-size: 12px;
 	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	color: var(--gts-dark);
+	max-width: 90px;
+	line-height: 1.35;
+}
+.gts-phone-box {
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: var(--gts-accent);
+	color: #fff;
 	text-decoration: none;
+	padding: 14px 28px;
+	min-height: 110px;
+	margin-right: -24px;
+	align-self: stretch;
+	transition: background .2s ease;
+}
+.gts-phone-box:hover,
+.gts-phone-box:focus {
+	background: var(--gts-accent-hover);
+	color: #fff;
+}
+.gts-phone-number {
+	font-size: 22px;
+	font-weight: 800;
+	letter-spacing: .03em;
+	white-space: nowrap;
+}
+.gts-phone-tag {
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .08em;
+	margin-top: 4px;
+}
+
+/* Bande grise : menu */
+.gts-header-nav {
+	background: var(--gts-light);
+	border-bottom: 1px solid #e0e0e0;
+}
+.gts-nav {
+	display: flex;
+}
+.gts-menu {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.gts-menu li a {
+	display: block;
+	padding: 14px 22px;
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	color: var(--gts-dark);
+	text-decoration: none;
+	border-bottom: 3px solid transparent;
+	transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+.gts-menu li a:hover,
+.gts-menu li.current-menu-item > a,
+.gts-menu li.current_page_item > a {
+	color: var(--gts-accent);
+	border-bottom-color: var(--gts-accent);
+	background: #fff;
+}
+.gts-menu ul.sub-menu {
+	display: none;
 }
 
 /* ---- Hero ---- */
@@ -233,8 +352,16 @@
 	.gts-columns-grid { grid-template-columns: 1fr; }
 	.gts-hero-title { font-size: 36px; }
 }
+@media (max-width: 992px) {
+	.gts-slogan { display: none; }
+	.gts-header-inner { gap: 20px; }
+}
 @media (max-width: 600px) {
 	.gts-services-grid { grid-template-columns: 1fr; }
 	.gts-newsletter-form { flex-direction: column; }
-	.gts-topbar .gts-container { justify-content: center; }
+	.gts-features { display: none; }
+	.gts-header-inner { min-height: 80px; }
+	.gts-phone-box { min-height: 80px; padding: 10px 18px; }
+	.gts-phone-number { font-size: 17px; }
+	.gts-menu li a { padding: 12px 14px; font-size: 12px; }
 }

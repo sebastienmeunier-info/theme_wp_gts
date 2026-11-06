@@ -68,19 +68,69 @@ function gts_render_home_sections() {
 add_action( 'astra_content_before', 'gts_render_home_sections' );
 
 /**
- * Bandeau téléphone "24H/24 – 7J/7" au-dessus du header
+ * Header complet sur mesure (remplace le header Astra, masqué en CSS) :
+ * barre blanche logo + slogan + 2 atouts + bloc téléphone rouge,
+ * puis bande grise avec le menu de navigation.
  */
-function gts_top_bar() {
-	$phone = get_theme_mod( 'gts_phone', '05 00 00 00 00' );
-	$label = get_theme_mod( 'gts_phone_label', '24H/24 - 7J/7' );
-	if ( ! $phone ) {
-		return;
+function gts_custom_header() {
+	$slogan    = get_theme_mod( 'gts_header_slogan', 'VOTRE PARTENAIRE PL SUR LA ROUTE ET SUR VOS CHANTIERS' );
+	$feat1     = get_theme_mod( 'gts_header_feature1', 'DÉPANNAGE SUR SITE' );
+	$feat2     = get_theme_mod( 'gts_header_feature2', 'INTERVENTION RAPIDE' );
+	$phone     = get_theme_mod( 'gts_phone', '06 12 34 56 78' );
+	$phone_tag = get_theme_mod( 'gts_phone_label', '24H/24 - 7J/7' );
+
+	if ( has_custom_logo() ) {
+		$brand = sprintf( '<div class="gts-brand-logo">%s</div>', get_custom_logo() );
+	} else {
+		$brand = sprintf(
+			'<div class="gts-brand-logo gts-brand-text">%s</div>',
+			get_bloginfo( 'name' )
+		);
 	}
-	printf(
-		'<div class="gts-topbar"><div class="gts-container"><span class="gts-topbar-tag">%s</span><a class="gts-topbar-phone" href="tel:%s">%s</a></div></div>',
-		esc_html( $label ),
-		esc_attr( preg_replace( '/\s+/', '', $phone ) ),
-		esc_html( $phone )
-	);
+	?>
+	<header class="gts-header">
+		<div class="gts-header-top">
+			<div class="gts-container gts-header-inner">
+				<?php echo $brand; ?>
+				<?php if ( $slogan ) : ?>
+					<p class="gts-slogan"><?php echo esc_html( $slogan ); ?></p>
+				<?php endif; ?>
+				<div class="gts-features">
+					<?php if ( $feat1 ) : ?>
+						<div class="gts-feature">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M21 6.5a5 5 0 0 1-6.6 4.7L7 18.6A2.4 2.4 0 1 1 3.6 15l7.4-7.4A5 5 0 0 1 17.6 1l-3 3 1.4 3 3-1.4z"/></svg>
+							<span><?php echo esc_html( $feat1 ); ?></span>
+						</div>
+					<?php endif; ?>
+					<?php if ( $feat2 ) : ?>
+						<div class="gts-feature">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+							<span><?php echo esc_html( $feat2 ); ?></span>
+						</div>
+					<?php endif; ?>
+				</div>
+				<?php if ( $phone ) : ?>
+					<a class="gts-phone-box" href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $phone ) ); ?>">
+						<strong class="gts-phone-number"><?php echo esc_html( $phone ); ?></strong>
+						<?php if ( $phone_tag ) : ?><span class="gts-phone-tag"><?php echo esc_html( $phone_tag ); ?></span><?php endif; ?>
+					</a>
+				<?php endif; ?>
+			</div>
+		</div>
+		<div class="gts-header-nav">
+			<div class="gts-container">
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'primary',
+					'container'      => 'nav',
+					'container_class'=> 'gts-nav',
+					'menu_class'     => 'gts-menu',
+					'fallback_cb'    => 'wp_page_menu',
+				) );
+				?>
+			</div>
+		</div>
+	</header>
+	<?php
 }
-add_action( 'astra_header_before', 'gts_top_bar' );
+add_action( 'astra_header_before', 'gts_custom_header' );

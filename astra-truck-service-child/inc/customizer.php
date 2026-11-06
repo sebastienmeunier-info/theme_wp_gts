@@ -53,6 +53,36 @@ function gts_customize_register( $wp_customize ) {
 		'type'    => 'text',
 	) );
 
+	$wp_customize->add_setting( 'gts_header_slogan', array(
+		'default'           => 'VOTRE PARTENAIRE PL SUR LA ROUTE ET SUR VOS CHANTIERS',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'gts_header_slogan', array(
+		'label'   => __( 'Slogan (centre du header)', 'astra-truck-service-child' ),
+		'section' => 'gts_header',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'gts_header_feature1', array(
+		'default'           => 'DÉPANNAGE SUR SITE',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'gts_header_feature1', array(
+		'label'   => __( 'Atout 1 (icône clé à molette)', 'astra-truck-service-child' ),
+		'section' => 'gts_header',
+		'type'    => 'text',
+	) );
+
+	$wp_customize->add_setting( 'gts_header_feature2', array(
+		'default'           => 'INTERVENTION RAPIDE',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	$wp_customize->add_control( 'gts_header_feature2', array(
+		'label'   => __( 'Atout 2 (icône horloge)', 'astra-truck-service-child' ),
+		'section' => 'gts_header',
+		'type'    => 'text',
+	) );
+
 	/* ---------- Hero ---------- */
 	$wp_customize->add_section( 'gts_hero', array(
 		'title' => __( 'Bannière (Hero)', 'astra-truck-service-child' ),
