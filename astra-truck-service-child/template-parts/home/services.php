@@ -14,7 +14,10 @@ $defaults = array(
 ?>
 <section id="prestations" class="gts-services">
 	<div class="gts-container">
-		<h2 class="gts-section-title"><?php echo esc_html( get_theme_mod( 'gts_services_title', 'Nos services' ) ); ?></h2>
+		<?php $services_title = get_theme_mod( 'gts_services_title', '' ); ?>
+		<?php if ( $services_title ) : ?>
+			<h2 class="gts-section-title"><?php echo esc_html( $services_title ); ?></h2>
+		<?php endif; ?>
 		<div class="gts-services-grid">
 			<?php for ( $i = 1; $i <= 4; $i++ ) :
 				$icon  = get_theme_mod( "gts_service_{$i}_icon", $defaults[ $i ][0] );

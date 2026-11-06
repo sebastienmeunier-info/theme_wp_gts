@@ -127,13 +127,13 @@ function gts_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'gts_services_title', array(
-		'default'           => 'Nos services',
+		'default'           => '',
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 	$wp_customize->add_control( 'gts_services_title', array(
-		'label'   => __( 'Titre de section', 'astra-truck-service-child' ),
-		'section' => 'gts_services',
-		'type'    => 'text',
+		'label'       => __( 'Titre de section (vide = masqué)', 'astra-truck-service-child' ),
+		'section'     => 'gts_services',
+		'type'        => 'text',
 	) );
 
 	for ( $i = 1; $i <= 4; $i++ ) {
