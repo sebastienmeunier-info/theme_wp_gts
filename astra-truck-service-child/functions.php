@@ -111,10 +111,13 @@ function gts_custom_header() {
 				</div>
 				<?php if ( $phone ) : ?>
 					<a class="gts-phone-box" href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $phone ) ); ?>">
-						<strong class="gts-phone-number"><?php echo esc_html( $phone ); ?></strong>
-						<?php if ( $phone_tag ) : ?><span class="gts-phone-tag"><?php echo esc_html( $phone_tag ); ?></span><?php endif; ?>
+						<svg class="gts-phone-picto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+						<span class="gts-phone-text">
+							<strong class="gts-phone-number"><?php echo esc_html( $phone ); ?></strong>
+							<?php if ( $phone_tag ) : ?><span class="gts-phone-tag"><?php echo esc_html( $phone_tag ); ?></span><?php endif; ?>
+						</span>
 					</a>
-				<?php endif; ?>
+					<?php endif; ?>
 			</div>
 		</div>
 		<div class="gts-header-nav">
