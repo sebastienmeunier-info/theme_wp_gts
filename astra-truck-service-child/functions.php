@@ -118,7 +118,7 @@ function gts_custom_header() {
 			</div>
 		</div>
 		<div class="gts-header-nav">
-			<div class="gts-container">
+			<div class="gts-container gts-nav-inner">
 				<?php
 				wp_nav_menu( array(
 					'theme_location' => 'primary',
@@ -128,6 +128,15 @@ function gts_custom_header() {
 					'fallback_cb'    => 'wp_page_menu',
 				) );
 				?>
+				<div class="gts-nav-search">
+					<input type="checkbox" id="gts-search-toggle" class="gts-search-toggle">
+					<form role="search" method="get" class="gts-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+						<input type="search" name="s" placeholder="<?php esc_attr_e( 'Rechercher&hellip;', 'astra-truck-service-child' ); ?>">
+					</form>
+					<label for="gts-search-toggle" class="gts-search-btn" aria-label="<?php esc_attr_e( 'Rechercher', 'astra-truck-service-child' ); ?>">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg>
+					</label>
+				</div>
 			</div>
 		</div>
 	</header>
