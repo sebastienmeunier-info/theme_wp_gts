@@ -73,7 +73,7 @@ add_action( 'astra_content_before', 'gts_render_home_sections' );
  * puis bande grise avec le menu de navigation.
  */
 function gts_custom_header() {
-	$slogan    = get_theme_mod( 'gts_header_slogan', 'VOTRE PARTENAIRE PL SUR LA ROUTE ET SUR VOS CHANTIERS' );
+	$slogan    = get_theme_mod( 'gts_header_slogan', "VOTRE PARTENAIRE PL<br>SUR LA ROUTE<br>ET SUR VOS CHANTIERS" );
 	$feat1     = get_theme_mod( 'gts_header_feature1', 'DÉPANNAGE SUR SITE' );
 	$feat2     = get_theme_mod( 'gts_header_feature2', 'INTERVENTION RAPIDE' );
 	$phone     = get_theme_mod( 'gts_phone', '06 12 34 56 78' );
@@ -93,7 +93,7 @@ function gts_custom_header() {
 			<div class="gts-container gts-header-inner">
 				<?php echo $brand; ?>
 				<?php if ( $slogan ) : ?>
-					<p class="gts-slogan"><?php echo esc_html( $slogan ); ?></p>
+					<p class="gts-slogan"><?php echo wp_kses( $slogan, array( 'br' => array() ) ); ?></p>
 				<?php endif; ?>
 				<div class="gts-features">
 					<?php if ( $feat1 ) : ?>

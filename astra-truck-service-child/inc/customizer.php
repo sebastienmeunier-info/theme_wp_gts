@@ -54,13 +54,14 @@ function gts_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'gts_header_slogan', array(
-		'default'           => 'VOTRE PARTENAIRE PL SUR LA ROUTE ET SUR VOS CHANTIERS',
-		'sanitize_callback' => 'sanitize_text_field',
+		'default'           => "VOTRE PARTENAIRE PL<br>SUR LA ROUTE<br>ET SUR VOS CHANTIERS",
+		'sanitize_callback' => 'wp_kses_post',
 	) );
 	$wp_customize->add_control( 'gts_header_slogan', array(
-		'label'   => __( 'Slogan (centre du header)', 'astra-truck-service-child' ),
-		'section' => 'gts_header',
-		'type'    => 'text',
+		'label'       => __( 'Slogan (gauche du header, <br> = saut de ligne)', 'astra-truck-service-child' ),
+		'section'     => 'gts_header',
+		'type'        => 'text',
+		'description' => __( 'Utilisez <br> pour forcer les sauts de ligne.', 'astra-truck-service-child' ),
 	) );
 
 	$wp_customize->add_setting( 'gts_header_feature1', array(
