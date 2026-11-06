@@ -1,12 +1,13 @@
 <?php
 /**
  * Trois colonnes : Prestations / Matériel / Actualités
+ * Texte blanc en surimpression sur l'image, picto (médiathèque) avant le titre.
  */
 
 $cols = array(
-	1 => array( 'Nos prestations',        'Services, partenariats et catalogue pour votre flotte.' ),
-	2 => array( 'Matériel / Équipement',  'Camion-atelier, valises de diagnostic, outillage et certifications.' ),
-	3 => array( 'Actualités',             'Promotions, newsletter et conseils poids lourds.' ),
+	1 => array( 'Nos prestations',       'Services, partenariats et catalogue pour votre flotte.' ),
+	2 => array( 'Matériel / Équipement', 'Camion-atelier, valises de diagnostic, outillage et certifications.' ),
+	3 => array( 'Actualités',            'Promotions, newsletter et conseils poids lourds.' ),
 );
 ?>
 <section class="gts-columns">
@@ -16,6 +17,7 @@ $cols = array(
 				$title = get_theme_mod( "gts_col_{$i}_title", $cols[ $i ][0] );
 				$text  = get_theme_mod( "gts_col_{$i}_text", $cols[ $i ][1] );
 				$img   = get_theme_mod( "gts_col_{$i}_image" );
+				$picto = get_theme_mod( "gts_col_{$i}_picto" );
 				$link  = get_theme_mod( "gts_col_{$i}_link" );
 				if ( ! $title ) { continue; }
 				?>
@@ -26,6 +28,9 @@ $cols = array(
 						<?php endif; ?>
 					</div>
 					<div class="gts-col-body">
+						<?php if ( $picto ) : ?>
+							<img class="gts-col-picto" src="<?php echo esc_url( wp_get_attachment_image_url( $picto, 'full' ) ); ?>" alt="">
+						<?php endif; ?>
 						<h3><?php echo esc_html( $title ); ?></h3>
 						<p><?php echo esc_html( $text ); ?></p>
 						<?php if ( $link ) : ?>

@@ -206,6 +206,16 @@ function gts_customize_register( $wp_customize ) {
 			'mime_type' => 'image',
 		) ) );
 
+		$wp_customize->add_setting( "gts_col_{$i}_picto", array(
+			'default'           => '',
+			'sanitize_callback' => 'absint',
+		) );
+		$wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, "gts_col_{$i}_picto", array(
+			'label'      => sprintf( __( 'Colonne %d — pictogramme (médiathèque)', 'astra-truck-service-child' ), $i ),
+			'section'    => 'gts_columns',
+			'mime_type' => 'image',
+		) ) );
+
 		$wp_customize->add_setting( "gts_col_{$i}_link", array(
 			'default'           => '',
 			'sanitize_callback' => 'esc_url_raw',
